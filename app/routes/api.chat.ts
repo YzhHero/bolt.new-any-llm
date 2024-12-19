@@ -1,10 +1,14 @@
 // @ts-nocheck
 // Preventing TS checks with files presented in the video for a better presentation.
-import { type ActionFunctionArgs } from '@remix-run/cloudflare';
+import { type ActionFunctionArgs, json } from '@remix-run/cloudflare';
 import { MAX_RESPONSE_SEGMENTS, MAX_TOKENS } from '~/lib/.server/llm/constants';
 import { CONTINUE_PROMPT } from '~/lib/.server/llm/prompts';
 import { streamText, type Messages, type StreamingOptions } from '~/lib/.server/llm/stream-text';
 import SwitchableStream from '~/lib/.server/llm/switchable-stream';
+
+export async function loader() {
+  return json({ message: "Please use POST method for chat API" }, { status: 405 });
+}
 
 export async function action(args: ActionFunctionArgs) {
   return chatAction(args);

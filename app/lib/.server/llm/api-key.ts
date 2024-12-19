@@ -10,15 +10,17 @@ export function getAPIKey(cloudflareEnv: Env, provider: string) {
 
   switch (provider) {
     case 'Anthropic':
-      return env.ANTHROPIC_API_KEY || cloudflareEnv.ANTHROPIC_API_KEY;
+      return env.ANTHROPIC_API_KEY || cloudflareEnv?.ANTHROPIC_API_KEY;
     case 'OpenAI':
-      return env.OPENAI_API_KEY || cloudflareEnv.OPENAI_API_KEY;
+      return env.OPENAI_API_KEY || cloudflareEnv?.OPENAI_API_KEY;
     case 'Google':
-      return env.GOOGLE_GENERATIVE_AI_API_KEY || cloudflareEnv.GOOGLE_GENERATIVE_AI_API_KEY;
+      return env.GOOGLE_GENERATIVE_AI_API_KEY || cloudflareEnv?.GOOGLE_GENERATIVE_AI_API_KEY;
     case 'Groq':
-      return env.GROQ_API_KEY || cloudflareEnv.GROQ_API_KEY;
+      return env.GROQ_API_KEY || cloudflareEnv?.GROQ_API_KEY;
     case 'OpenRouter':
-      return env.OPEN_ROUTER_API_KEY || cloudflareEnv.OPEN_ROUTER_API_KEY;
+      return env.OPEN_ROUTER_API_KEY || cloudflareEnv?.OPEN_ROUTER_API_KEY;
+    case 'Jarvis':
+      return env.JARVIS_API_KEY || cloudflareEnv?.JARVIS_API_KEY;
     default:
       return "";
   }
